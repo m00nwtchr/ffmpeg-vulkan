@@ -27,7 +27,7 @@ jobs:
         with:
           packages: >
             asp
-        scripts: "asp checkout ffmpeg"
+          scripts: "asp checkout ffmpeg"
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
