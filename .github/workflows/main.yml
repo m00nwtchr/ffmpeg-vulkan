@@ -41,7 +41,7 @@ jobs:
       #     scripts: "asp checkout f"
 
       - name: Publish AUR package
-        uses: KSXGitHub/github-actions-deploy-aur@2.2.5
+        uses: KSXGitHub/github-actions-deploy-aur@master
         with:
           pkgname: ffmpeg-vulkan
           pkgbuild: ./ffmpeg/trunk/PKGBUILD
