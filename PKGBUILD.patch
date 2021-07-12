@@ -1,0 +1,22 @@
+1c1,2
+< # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+---
+> # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
+> # Contributor: Maxime Gauduin <alucryd@archlinux.org>
+7c8
+< pkgname=ffmpeg
+---
+> pkgname=ffmpeg-vulkan
+85a87
+>   'vulkan-icd-loader: Vulkan support'
+86a89
+> conflicts=(ffmpeg)
+87a91
+>   ffmpeg
+177,178c181,183
+<     --enable-version3
+< 
+---
+>     --enable-version3 \
+>     --enable-vulkan \
+>     --enable-libglslang
