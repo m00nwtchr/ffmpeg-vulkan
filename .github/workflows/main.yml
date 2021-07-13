@@ -27,7 +27,7 @@ jobs:
         with:
           packages: >
             asp
-          scripts: "asp checkout ffmpeg"
+          scripts: "asp checkout ffmpeg && chmod -R 777 ffmpeg"
 
       # Runs a single command using the runners shell
       - name: Patch ffmpeg PKGBUILD
