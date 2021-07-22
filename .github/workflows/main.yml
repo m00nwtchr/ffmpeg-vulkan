@@ -22,7 +22,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Git Clone Action
+      - name: Git clone ffmpeg-vulkan from aur
         # You may pin to the exact commit or the version.
         # uses: sudosubin/git-clone-action@8a93ce24d47782e30077508cccacf8a05a891bae
         uses: sudosubin/git-clone-action@v1.0.1
@@ -30,7 +30,8 @@ jobs:
           # Repository owner and name. Ex: sudosubin/git-clone-action
           repository: ffmpeg-vulkan
           platform: aur.archlinux.org
-
+          path: ./ffmpeg-vulkan
+          
       - name: Get last ffmpeg version
         run: |
           cd ffmpeg-vulkan
