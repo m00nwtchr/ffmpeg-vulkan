@@ -22,6 +22,22 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Git Clone Action
+        # You may pin to the exact commit or the version.
+        # uses: sudosubin/git-clone-action@8a93ce24d47782e30077508cccacf8a05a891bae
+        uses: sudosubin/git-clone-action@v1.0.1
+        with:
+          # Repository owner and name. Ex: sudosubin/git-clone-action
+          repository: ffmpeg-vulkan
+          platform: aur.archlinux.org
+
+      - name: Get last ffmpeg version
+        run: |
+          cd ffmpeg-vulkan
+          cat .SRCINFO | grep pkgver | awk '{print "last_ffmpeg_ver="$3}' >> $GITHUB_ENV
+          cd ..
+          rm -rf ffmpeg-vulkan
+
       - name: Checkout latest ffmpeg PKGBUILD from git
         uses: countstarlight/arch-makepkg-action@master
         with:
@@ -33,6 +49,10 @@ jobs:
       - name: Patch ffmpeg PKGBUILD
         run: patch ffmpeg/trunk/PKGBUILD PKGBUILD.patch
 
+      - name: Get current ffmpeg version
+        run: |
+          cat .SRCINFO | grep pkgver | awk '{print "ffmpeg_ver="$3}' >> $GITHUB_ENV
+
       # - name: Build 
       #   uses: countstarlight/arch-makepkg-action@master
       #   with:
@@ -42,6 +62,7 @@ jobs:
 
       - name: Publish AUR package
         uses: KSXGitHub/github-actions-deploy-aur@master
+        if: "${{ env.ffmpeg_ver > env.last_ffmpeg_ver }}"
         with:
           pkgname: ffmpeg-vulkan
           pkgbuild: ./ffmpeg/trunk/PKGBUILD
