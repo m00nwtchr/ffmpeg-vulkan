@@ -44,7 +44,8 @@ jobs:
         with:
           packages: >
             asp
-          scripts: asp checkout ffmpeg && chmod -R 777 ffmpeg && ls -R && patch ffmpeg/trunk/PKGBUILD PKGBUILD.patch && cd ffmpeg/trunk && makepkg -p ffmpeg/trunk/PKGBUILD --printsrcinfo > .SRCINFO
+          scripts: asp checkout ffmpeg && chmod -R 777 ffmpeg && patch ./ffmpeg/trunk/PKGBUILD PKGBUILD.patch && cd ./ffmpeg/trunk && makepkg --printsrcinfo > .SRCINFO
+          # scripts: asp checkout ffmpeg && chmod -R 777 ffmpeg && ls -R && patch ./ffmpeg/trunk/PKGBUILD PKGBUILD.patch && cd ./ffmpeg/trunk && makepkg -p ffmpeg/trunk/PKGBUILD --printsrcinfo > .SRCINFO
 
       # Runs a single command using the runners shell
       # - name: Patch ffmpeg PKGBUILD
