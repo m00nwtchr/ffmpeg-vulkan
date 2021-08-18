@@ -52,7 +52,7 @@ jobs:
 
       - name: Get current ffmpeg version
         run: |
-          cat .SRCINFO | grep pkgver | awk '{print "ffmpeg_ver="$3}' >> $GITHUB_ENV
+          cat ./ffmpeg-vulkan/.SRCINFO | grep pkgver | awk '{print "ffmpeg_ver="$3}' >> $GITHUB_ENV
 
       # - name: Build 
       #   uses: countstarlight/arch-makepkg-action@master
