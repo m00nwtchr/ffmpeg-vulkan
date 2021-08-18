@@ -44,7 +44,7 @@ jobs:
         with:
           packages: >
             asp
-          scripts: asp checkout ffmpeg && chmod -R 777 ffmpeg && patch ffmpeg/trunk/PKGBUILD PKGBUILD.patch && makepkg -p ffmpeg/trunk/PKGBUILD --printsrcinfo | grep pkgver | awk '{print "ffmpeg_ver="$3}' >> $GITHUB_ENV
+          scripts: asp checkout ffmpeg && chmod -R 777 ffmpeg && patch ffmpeg/trunk/PKGBUILD PKGBUILD.patch && cd ffmpeg/trunk && makepkg --printsrcinfo | grep pkgver | awk '{print "ffmpeg_ver="$3}' >> $GITHUB_ENV
           # makepkg -p ffmpeg/trunk/PKGBUILD --printsrcinfo > ffmpeg/trunk/.SRCINFO
 
       # Runs a single command using the runners shell
