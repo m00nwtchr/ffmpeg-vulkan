@@ -7,13 +7,19 @@
 < pkgname=ffmpeg
 ---
 > pkgname=ffmpeg-vulkan
-85a87
+9c10
+< pkgrel=4
+---
+> pkgrel=5
+70a72
+>   glslang
+85a88
 >   'vulkan-icd-loader: Vulkan support'
-86a89
+86a90
 > conflicts=(ffmpeg)
-87a91
+87a92
 >   ffmpeg
-177,178c181,183
+177,178c182,184
 <     --enable-version3
 < 
 ---
