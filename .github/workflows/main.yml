@@ -44,16 +44,15 @@ jobs:
         with:
           packages: >
             asp
-          scripts: asp checkout ffmpeg && chmod -R 777 ffmpeg && patch ffmpeg/trunk/PKGBUILD PKGBUILD.patch && cd ffmpeg/trunk && makepkg --printsrcinfo | grep pkgver | awk '{print "ffmpeg_ver="$3}' >> $GITHUB_ENV
-          # makepkg -p ffmpeg/trunk/PKGBUILD --printsrcinfo > ffmpeg/trunk/.SRCINFO
+          scripts: asp checkout ffmpeg && chmod -R 777 ffmpeg && patch ffmpeg/trunk/PKGBUILD PKGBUILD.patch && cd ffmpeg/trunk && makepkg -p ffmpeg/trunk/PKGBUILD --printsrcinfo > .SRCINFO
 
       # Runs a single command using the runners shell
       # - name: Patch ffmpeg PKGBUILD
         # run: patch ffmpeg/trunk/PKGBUILD PKGBUILD.patch
 
-      # - name: Get current ffmpeg version
-        # run: |
-          # cat ./ffmpeg/.SRCINFO | grep pkgver | awk '{print "ffmpeg_ver="$3}' >> $GITHUB_ENV
+      - name: Get current ffmpeg version
+        run: |
+          cat ./ffmpeg/trunk/.SRCINFO | grep pkgver | awk '{print "ffmpeg_ver="$3}' >> $GITHUB_ENV
 
       # - name: Build 
       #   uses: countstarlight/arch-makepkg-action@master
